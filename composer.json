@@ -1,9 +1,27 @@
 {
-    "require": {
-        "nette/neon": "^3.0",
-        "nunomaduro/larastan": "^0.3.15"
+  "name": "stickee/laravel-code-style",
+  "authors": [{
+    "name": "Paul Tibbetts",
+    "email": "paul.tibbetts@stickee.co.uk"
+  }],
+  "repositories": [{
+    "type": "path",
+    "url": "~/projects/stickee-php-code-style"
+  }],
+  "require": {
+    "nette/neon": "^3.0",
+    "nunomaduro/larastan": "^0.3.15",
+    "stickee/php-code-style": "dev-master",
+    "symfony/yaml": "^4.2",
+    "symfony/console": "^4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Console\\": "src"
     },
-    "autoload": {
-      "psr-4": {"Scripts\\": "scripts/"}
-    }
+    "classmap": ["src"]
+  },
+  "bin": [
+    "bin/stickee-laravel-code-style"
+  ]
 }
