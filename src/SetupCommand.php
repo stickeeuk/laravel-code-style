@@ -11,9 +11,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Yaml\Yaml;
 use Nette\Neon\Neon;
 
-class SetupCommand extends Command
+class BuildCommand extends Command
 {
-    const COMMAMD_NAME = 'setup';
+    const COMMAMD_NAME = 'build';
 
     private $phpCodeStylePath = __DIR__ . '/../vendor/stickee/php-code-style/dist/';
 
