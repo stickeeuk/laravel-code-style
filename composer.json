@@ -1,15 +1,11 @@
 {
-  "name": "stickee/laravel-code-style",
+  "name": "stickeepaul/laravel-code-style",
   "authors": [{
     "name": "Paul Tibbetts",
     "email": "paul.tibbetts@stickee.co.uk"
   }],
-  "repositories": [{
-    "type": "path",
-    "url": "~/projects/stickee-php-code-style"
-  }],
   "require": {
-    "stickee/php-code-style": "dev-master"
+    "stickeepaul/php-code-style": "0.0.1"
   },
   "require-dev": {
     "nette/neon": "^3.0",
