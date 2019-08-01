@@ -11,5 +11,5 @@ parameters:
 		- "#Call to an undefined method Illuminate\\Support\\Fluent::references()#"
 
 includes:
-	- ./vendor/nunomaduro/larastan/extension.neon
+	- %currentWorkingDirectory%/vendor/nunomaduro/larastan/extension.neon
 
