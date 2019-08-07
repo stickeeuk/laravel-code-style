@@ -1,18 +1,16 @@
 parameters:
-    git_dir: .
-    bin_dir: vendor/bin
     tasks:
+        phpcsfixer2:
+            config: vendor/stickee/laravel-code-style/dist/.php_cs
         phpunit:
             config_file: phpunit.xml
         git_blacklist:
             keywords:
-                - ' die('
-                - ' var_dump('
                 - ' dump('
                 - ' dd('
-                - ' exit;'
-            triggered_by: ['php']
         eslint: ~
+        phpstan:
+            configuration: vendor/stickee/laravel-code-style/dist/phpstan.neon
 
 services:
     task.eslint:

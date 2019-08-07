@@ -2,4 +2,6 @@ parameters:
     git_dir: .
     hooks_dir: null
     bin_dir: vendor/bin
-    tasks: { git_blacklist: { keywords: [dd(, var_dump(, die(] }, phpcsfixer2: null, composer: null, phpstan: { configuration: vendor/stickee/laravel-code-style/dist/phpstan.neon } }
+    tasks: { composer: { file: ./composer.json }, git_blacklist: { keywords: [' exit;', ' var_dump(', ' die(', ' dump(', ' dd('], triggered_by: [php] }, phpcsfixer2: { config: vendor/stickee/laravel-code-style/dist/.php_cs }, phpstan: { configuration: vendor/stickee/laravel-code-style/dist/phpstan.neon }, securitychecker: { lockfile: ./composer.lock }, phpversion: { project: '7.3' }, phpunit: { config_file: phpunit.xml }, eslint: null }
+services:
+    task.eslint: { class: Stickee\GrumPHP\ESLint, arguments: ['@config', '@process_builder', '@formatter.raw_process'], tags: [{ name: grumphp.task, config: eslint }] }
