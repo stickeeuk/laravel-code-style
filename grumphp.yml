@@ -9,8 +9,9 @@ parameters:
                 - ' dump('
                 - ' dd('
         eslint: ~
-        phpstan:
-            configuration: vendor/stickee/laravel-code-style/dist/phpstan.neon
+        shell:
+            scripts:
+                - [ "-c", "./vendor/bin/phpstan analyse -c=dist/phpstan.neon"]
 
 services:
     task.eslint:
