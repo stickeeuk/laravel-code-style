@@ -1,4 +1,25 @@
 parameters:
     git_dir: .
     bin_dir: vendor/bin
-    tasks: {  }
+    tasks:
+        phpunit:
+            config_file: phpunit.xml
+        git_blacklist:
+            keywords:
+                - ' die('
+                - ' var_dump('
+                - ' dump('
+                - ' dd('
+                - ' exit;'
+            triggered_by: ['php']
+        eslint: ~
+
+services:
+    task.eslint:
+        class: Stickee\GrumPHP\ESLint
+        arguments:
+            - '@config'
+            - '@process_builder'
+            - '@formatter.raw_process'
+        tags:
+            - { name: grumphp.task, config: eslint }
