@@ -12,13 +12,4 @@ parameters:
         shell:
             scripts:
                 - [ "-c", "./vendor/bin/phpstan analyse -c vendor/stickee/laravel-code-style/dist/phpstan.neon"]
-
-services:
-    task.eslint:
-        class: Stickee\GrumPHP\ESLint
-        arguments:
-            - '@config'
-            - '@process_builder'
-            - '@formatter.raw_process'
-        tags:
-            - { name: grumphp.task, config: eslint }
+                - [ "-c", "./node_modules/.bin/eslint resources/js --fix"]
