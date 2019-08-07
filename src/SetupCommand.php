@@ -99,6 +99,7 @@ class BuildCommand extends Command
         $config = array_merge_recursive($config, $laravelConfig);
 
         // we dont need the certain php-code-style configs merged so reset this
+        unset($config['parameters']['tasks']['phpstan']); // Dont need phpstan as we are using a shell script instead
         $config['parameters']['tasks']['phpcsfixer2'] = $laravelConfig['parameters']['tasks']['phpcsfixer2'];
 
         // save config file

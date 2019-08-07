@@ -2,6 +2,6 @@ parameters:
     git_dir: .
     hooks_dir: null
     bin_dir: vendor/bin
-    tasks: { composer: { file: ./composer.json }, git_blacklist: { keywords: [' exit;', ' var_dump(', ' die(', ' dump(', ' dd('], triggered_by: [php] }, phpcsfixer2: { config: vendor/stickee/laravel-code-style/dist/.php_cs }, phpstan: { configuration: vendor/stickee/php-code-style/phpstan.neon }, securitychecker: { lockfile: ./composer.lock }, phpversion: { project: '7.3' }, phpunit: { config_file: phpunit.xml }, eslint: null, shell: { scripts: [['-c', './vendor/bin/phpstan analyse -c=dist/phpstan.neon']] } }
+    tasks: { composer: { file: ./composer.json }, git_blacklist: { keywords: [' exit;', ' var_dump(', ' die(', ' dump(', ' dd('], triggered_by: [php] }, phpcsfixer2: { config: vendor/stickee/laravel-code-style/dist/.php_cs }, securitychecker: { lockfile: ./composer.lock }, phpversion: { project: '7.3' }, phpunit: { config_file: phpunit.xml }, eslint: null, shell: { scripts: [['-c', './vendor/bin/phpstan analyse -c vendor/stickee/laravel-code-style/dist/phpstan.neon']] } }
 services:
     task.eslint: { class: Stickee\GrumPHP\ESLint, arguments: ['@config', '@process_builder', '@formatter.raw_process'], tags: [{ name: grumphp.task, config: eslint }] }

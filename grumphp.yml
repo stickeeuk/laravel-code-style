@@ -11,7 +11,7 @@ parameters:
         eslint: ~
         shell:
             scripts:
-                - [ "-c", "./vendor/bin/phpstan analyse -c=dist/phpstan.neon"]
+                - [ "-c", "./vendor/bin/phpstan analyse -c vendor/stickee/laravel-code-style/dist/phpstan.neon"]
 
 services:
     task.eslint:
