@@ -6,7 +6,7 @@
   }],
   "require": {
     "nunomaduro/larastan": "^0.3.15",
-    "stickee/php-code-style": "^1.0"
+    "stickee/php-code-style": "^1.2"
   },
   "require-dev": {
     "nette/neon": "^3.0",

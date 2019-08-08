@@ -20,24 +20,26 @@ class BuildCommand extends Command
     public function configure()
     {
         $this->setName(self::COMMAMD_NAME)
-             ->setDescription('Copies necessary files into the project root')
-             ->setHelp('This command copies over files');
+            ->setDescription('Copies necessary files into the project root')
+            ->setHelp('This command copies over files');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln([
             'Stickee Laravel Code Style',
-            '=========================='
+            '==========================',
         ]);
 
         $this->cleanDistDirectory();
 
         $this->updatePHPStanFile();
+        $this->updatePHPCsFile();
         $this->updateGrumPHPFile();
 
         $output->writeln([
             '<info>vendor/stickee/laravel-code-style/dist/grumphp.yml created</>',
+            '<info>vendor/stickee/laravel-code-style/dist/.php_cs created</>',
             '<info>vendor/stickee/laravel-code-style/dist/phpstan.neon created</>',
         ]);
     }
@@ -57,7 +59,7 @@ class BuildCommand extends Command
     {
         $fileName = 'phpstan.neon';
 
-        $laravelFileName = __DIR__ .'/../resources/laravel.phpstan.neon';
+        $laravelFileName = __DIR__ . '/../resources/laravel.phpstan.neon';
 
         // read original config
         $fileHandle = fopen($this->phpCodeStylePath . $fileName, 'r');
@@ -79,15 +81,26 @@ class BuildCommand extends Command
         fclose($fileHandle);
     }
 
+    private function updatePHPCsFile()
+    {
+        $fileName = '.php_cs';
+        copy(__DIR__ . '/../resources/' . $fileName, __DIR__ . '/../dist/' . $fileName);
+    }
+
     private function updateGrumPHPFile()
     {
         $fileName = 'grumphp.yml';
 
-        // read original config file
+        // parsing config files
         $config = Yaml::parseFile($this->phpCodeStylePath . $fileName);
+        $laravelConfig = Yaml::parseFile($fileName);
 
-        // update path to file this repo creates
-        $config['parameters']['tasks']['phpstan']['configuration'] = 'vendor/stickee/laravel-code-style/dist/phpstan.neon';
+        // merge configs
+        $config = array_merge_recursive($config, $laravelConfig);
+
+        // we dont need the certain php-code-style configs merged so reset this
+        unset($config['parameters']['tasks']['phpstan']); // Dont need phpstan as we are using a shell script instead
+        $config['parameters']['tasks']['phpcsfixer2'] = $laravelConfig['parameters']['tasks']['phpcsfixer2'];
 
         // save config file
         file_put_contents(__DIR__ . '/../dist/grumphp.yml', Yaml::dump($config));

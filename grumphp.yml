@@ -1,25 +1,15 @@
 parameters:
-    git_dir: .
-    bin_dir: vendor/bin
     tasks:
+        phpcsfixer2:
+            config: vendor/stickee/laravel-code-style/dist/.php_cs
         phpunit:
             config_file: phpunit.xml
         git_blacklist:
             keywords:
-                - ' die('
-                - ' var_dump('
                 - ' dump('
                 - ' dd('
-                - ' exit;'
-            triggered_by: ['php']
         eslint: ~
-
-services:
-    task.eslint:
-        class: Stickee\GrumPHP\ESLint
-        arguments:
-            - '@config'
-            - '@process_builder'
-            - '@formatter.raw_process'
-        tags:
-            - { name: grumphp.task, config: eslint }
+        shell:
+            scripts:
+                - [ "-c", "./vendor/bin/phpstan analyse -c vendor/stickee/laravel-code-style/dist/phpstan.neon"]
+                - [ "-c", "./node_modules/.bin/eslint resources/js --fix"]
