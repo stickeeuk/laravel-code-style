@@ -55,7 +55,8 @@ class BuildCommand extends Command
         }
     }
 
-    private function copyFile($fileName) {
+    private function copyFile($fileName)
+    {
         copy(__DIR__ . '/../resources/' . $fileName, __DIR__ . '/../dist/' . $fileName);
     }
 
