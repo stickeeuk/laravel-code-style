@@ -1,8 +1,0 @@
-parameters:
-	level: 4
-	paths:
-		- app
-
-includes:
-	- %currentWorkingDirectory%/vendor/nunomaduro/larastan/extension.neon
-

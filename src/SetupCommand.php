@@ -33,14 +33,14 @@ class BuildCommand extends Command
 
         $this->cleanDistDirectory();
 
-        $this->updatePHPStanFile();
         $this->updatePHPCsFile();
-        $this->updateGrumPHPFile();
+        $this->updateHuskyFile();
+        $this->updateLintStagedFile();
 
         $output->writeln([
-            '<info>vendor/stickee/laravel-code-style/dist/grumphp.yml created</>',
             '<info>vendor/stickee/laravel-code-style/dist/.php_cs created</>',
-            '<info>vendor/stickee/laravel-code-style/dist/phpstan.neon created</>',
+            '<info>vendor/stickee/laravel-code-style/dist/.huskyrc created</>',
+            '<info>vendor/stickee/laravel-code-style/dist/.lintstagedrc created</>',
         ]);
     }
 
@@ -55,54 +55,22 @@ class BuildCommand extends Command
         }
     }
 
-    private function updatePHPStanFile()
-    {
-        $fileName = 'phpstan.neon';
-
-        $laravelFileName = __DIR__ . '/../resources/laravel.phpstan.neon';
-
-        // read original config
-        $fileHandle = fopen($this->phpCodeStylePath . $fileName, 'r');
-        $file = fread($fileHandle, filesize($this->phpCodeStylePath . $fileName));
-        $config = Neon::decode($file);
-        fclose($fileHandle);
-
-        // read laravel config
-        $laravelConfigHandle = fopen($laravelFileName, 'r');
-        $laravelConfigFile = fread($laravelConfigHandle, filesize($laravelFileName));
-        $laravelConfig = Neon::decode($laravelConfigFile);
-
-        // merge configs
-        $config = array_merge($config, $laravelConfig);
-
-        // write and close
-        $fileHandle = fopen(__DIR__ . '/../dist/' . $fileName, 'w');
-        fwrite($fileHandle, Neon::encode($config, Neon::BLOCK));
-        fclose($fileHandle);
+    private function copyFile($fileName) {
+        copy(__DIR__ . '/../resources/' . $fileName, __DIR__ . '/../dist/' . $fileName);
     }
 
     private function updatePHPCsFile()
     {
-        $fileName = '.php_cs';
-        copy(__DIR__ . '/../resources/' . $fileName, __DIR__ . '/../dist/' . $fileName);
+        $this->copyFile('.php_cs');
     }
 
-    private function updateGrumPHPFile()
+    private function updateHuskyFile()
     {
-        $fileName = 'grumphp.yml';
+        $this->copyFile('.huskyrc');
+    }
 
-        // parsing config files
-        $config = Yaml::parseFile($this->phpCodeStylePath . $fileName);
-        $laravelConfig = Yaml::parseFile($fileName);
-
-        // merge configs
-        $config = array_merge_recursive($config, $laravelConfig);
-
-        // we dont need the certain php-code-style configs merged so reset this
-        unset($config['parameters']['tasks']['phpstan']); // Dont need phpstan as we are using a shell script instead
-        $config['parameters']['tasks']['phpcsfixer2'] = $laravelConfig['parameters']['tasks']['phpcsfixer2'];
-
-        // save config file
-        file_put_contents(__DIR__ . '/../dist/grumphp.yml', Yaml::dump($config));
+    private function updateLintStagedFile()
+    {
+        $this->copyFile('.lintstagedrc');
     }
 }
