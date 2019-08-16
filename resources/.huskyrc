@@ -1,0 +1,6 @@
+{
+    "skipCI": false,
+    "hooks": {
+      "pre-commit": "lint-staged && php artisan code:analyse && php ./vendor/bin/phpunit"
+    }
+}

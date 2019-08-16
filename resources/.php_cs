@@ -1,14 +1,13 @@
 <?php
 $finder = PhpCsFixer\Finder::create()
-    ->exclude('bootstrap/cache')
-    ->exclude('node_modules')
-    ->exclude('storage')
-    ->exclude('nova')
     ->in(__DIR__)
-    ->append([__DIR__.'/php-cs-fixer'])
+    ->exclude(['bootstrap/cache', 'node_modules', 'storage', 'vendor', 'nova'])
+    ->name('*.php')
     ->notName('*.blade.php')
     ->notName('.phpstorm.meta.php')
     ->notName('_ide_*.php')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true)
 ;
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(false)

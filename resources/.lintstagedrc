@@ -1,0 +1,19 @@
+{
+    "*.php": [
+      "php ./vendor/bin/php-cs-fixer fix --config .php_cs",
+      "git add"
+    ],
+     "resources/**/*.{css,js}": [
+        "prettier --write",
+        "git add"
+     ],
+     "*.js": [
+          "./node_modules/.bin/eslint --fix",
+          "git add"
+      ],
+    "composer.json": [
+      "composer validate",
+      "php ./vendor/bin/security-checker security:check",
+      "git add"
+    ]
+}
