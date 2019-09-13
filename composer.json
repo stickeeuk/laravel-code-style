@@ -18,8 +18,5 @@
       "Console\\": "src"
     },
     "classmap": ["src"]
-  },
-  "bin": [
-    "bin/stickee-laravel-code-style"
-  ]
+  }
 }
