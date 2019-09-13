@@ -1,6 +1,8 @@
 <?php namespace Stickee;
 
-class StickeeServiceProvider extends \Illuminate\Support\ServiceProvider
+use Illuminate\Support\ServiceProvider;
+
+class StickeeServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.
