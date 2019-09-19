@@ -1,4 +1,4 @@
-<?php namespace Stickee;
+<?php namespace Stickee\LaravelCodeStyle;
 
 use Illuminate\Support\ServiceProvider;
 
