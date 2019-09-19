@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Stickee\\": "src"
+      "Stickee\\LaravelCodeStyle\\": "src"
     },
     "classmap": [
       "src"
