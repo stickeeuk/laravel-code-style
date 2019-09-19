@@ -2,8 +2,6 @@
 
 This repository contains config files for tools for Laravel projects.
 
-You will also need the [stickee/php-code-style](https://github.com/stickee/php-code-style) package which will also be installed alongside this package.
-
 ## Usage
 
 First install this package:
@@ -12,32 +10,25 @@ First install this package:
 composer require --dev stickee/laravel-code-style
 ```
 
-and then pass the `-c`/`--c`/`--config` option to the tool you wish to use and use `vendor/stickee/laravel-code-style/dist/<config>.yml` as the path.
+You should then be able to publish the assets using the `php artisan vendor:publish` command.
 
-### GrumPHP
+The `stickee-configs` contain good defaults for all projects, and the `stickee-resources` contains 
+scaffolding which is recommended if your starting a new project.
 
-GrumPHP can be ran using:
-
-```
-vendor/bin/grumphp <COMMAND> -c vendor/stickee/laravel-code-style/dist/grumphp.yml
-```
-#### Extending GrumPHP
-
-If you need to add extra parameters to GrumPHP you can import this package's `grumphp.yml` config file and then extend it:
+You then need to install eslint configs
 
 ```
-imports:
-  - { resource: vendor/stickee/laravel-code-style/dist/grumphp.yml }
-parameters:
-  ...
+npx install-peerdeps --dev eslint-config-stickee
 ```
 
-### PHPStan
+### Husky (Task Runner)
 
-PHPStan can be ran using:
+It's advisable to use [Husky](https://github.com/typicode/husky) as the task runner. The config files 
+should already be published using the above command, however you will still need to install husky:
 
 ```
-vendor/bin/phpstan <COMMAND> -c vendor/stickee/laravel-code-style/dist/phpstan.neon
+npm install husky
+npm install lint-staged
 ```
 
 ### PHPCS
@@ -45,9 +36,5 @@ vendor/bin/phpstan <COMMAND> -c vendor/stickee/laravel-code-style/dist/phpstan.n
 PHP-CS-Fixer can be ran using:
 
 ```
-vendor/bin/phpcs <COMMAND> --config vendor/stickee/php-code-style/dist/.phpcs
+vendor/bin/phpcs <COMMAND>
 ```
-
-## Development
-
-This repository depends on [stickee/php-code-style](https://github.com/stickee/php-code-style) to generate the config files for Laravel. Each time the PHP code style repository is updated this repository also needs updating by running `bin/stickee-laravel-code-style build`; The `dist` folder is also committed so that this repository is ready to use simply by requiring it.

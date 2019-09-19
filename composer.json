@@ -1,25 +1,33 @@
 {
   "name": "stickee/laravel-code-style",
-  "authors": [{
-    "name": "Paul Tibbetts",
-    "email": "paul.tibbetts@stickee.co.uk"
-  }],
+  "authors": [
+    {
+      "name": "Paul Tibbetts",
+      "email": "paul.tibbetts@stickee.co.uk"
+    },
+    {
+      "name": "Rehan Aslam",
+      "email": "rehan.aslam@stickee.co.uk"
+    }
+  ],
   "require": {
     "nunomaduro/larastan": "^0.3.15",
-    "stickee/php-code-style": "^1.2"
-  },
-  "require-dev": {
-    "nette/neon": "^3.0",
-    "symfony/yaml": "^4.2",
-    "symfony/console": "^4.2"
+    "friendsofphp/php-cs-fixer": "^2.15",
+    "sensiolabs/security-checker": "^6.0"
   },
   "autoload": {
     "psr-4": {
-      "Console\\": "src"
+      "Stickee\\LaravelCodeStyle\\": "src"
     },
-    "classmap": ["src"]
+    "classmap": [
+      "src"
+    ]
   },
-  "bin": [
-    "bin/stickee-laravel-code-style"
-  ]
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Stickee\\LaravelCodeStyle\\StickeeServiceProvider"
+      ]
+    }
+  }
 }
