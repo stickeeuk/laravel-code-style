@@ -32,7 +32,7 @@ return PhpCsFixer\Config::create()
        'no_extra_consecutive_blank_lines' => true,
        'no_leading_import_slash' => true,
        'no_leading_namespace_whitespace' => true,
-       'no_mixed_echo_print' => ['use' => 'print'],
+       'no_mixed_echo_print' => ['use' => 'echo'],
        'no_multiline_whitespace_before_semicolons' => true,
        'no_null_property_initialization' => true,
        'no_short_bool_cast' => true,
