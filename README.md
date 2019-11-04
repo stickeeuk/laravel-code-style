@@ -15,27 +15,28 @@ You should then be able to publish the assets using following command:
 php artisan vendor:publish
 ```
 
-The `stickee-configs` contain good defaults for all projects, and the `stickee-resources` contains 
-scaffolding which is recommended if your starting a new project.
+The `stickee-configs` contain good defaults for all projects and the `stickee-resources` contains 
+scaffolding which is recommended if you are starting a new project.
 
-You then need to install eslint configs
+You then need to install [Stickee JavaScript Code Style](https://github.com/stickeeuk/javascript-code-style)
 
 ```
-npx install-peerdeps --dev eslint-config-stickee
+yarn add --dev stickee-javascript-code-style
 ```
 
 ## Recommended
 
-It's recommended to install [larastan](https://github.com/nunomaduro/larastan) in the project.
+It's recommended to install [Larastan](https://github.com/nunomaduro/larastan) in the project:
 
 ```
 composer require --dev nunomaduro/larastan
 ```
 
-Once installed, you can run `php artisan code:analyse` at anytime which gives you a very good insight into your code.
+Once installed, you can run `php artisan code:analyse` at any time which gives you a very good insight into your code.
 
-You can add the following snippet to your .huskyrc file, in the pre-commit part of the file,
- to run this every time you try to commit to GIT:
+You can add the following snippet to your `.huskyrc` file,
+ in the pre-commit part of the file,
+ to run this every time you try to commit to Git:
 
 ```
  && php artisan code:analyse
@@ -44,11 +45,10 @@ You can add the following snippet to your .huskyrc file, in the pre-commit part 
 ### Husky (Task Runner)
 
 It's advisable to use [Husky](https://github.com/typicode/husky) as the task runner. The config files 
-should already be published using the above command, however you will still need to install husky:
+will already be published using the above command, however you will still need to install husky:
 
 ```
-npm install husky
-npm install lint-staged
+yarn add --dev husky lint-staged
 ```
 
 ### PHPCS
