@@ -32,13 +32,13 @@ It's recommended to install [larastan](https://github.com/nunomaduro/larastan) i
 composer require --dev nunomaduro/larastan
 ```
 
-Once installed, you can run `php artisan code:analyse` at anytime which gives you a very good insight into your code.
+Once installed, you can run `./vendor/bin/phpstan analyse` at anytime which gives you a very good insight into your code.
 
 You can add the following snippet to your .huskyrc file, in the pre-commit part of the file,
  to run this every time you try to commit to GIT:
 
 ```
- && php artisan code:analyse
+ && ./vendor/bin/phpstan analyse
 ```
 
 ### Husky (Task Runner)
