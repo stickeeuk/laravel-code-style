@@ -1,5 +1,7 @@
 includes:
-	- %currentWorkingDirectory%/vendor/nunomaduro/larastan/extension.neon
+	- ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-	level: 4
+    paths:
+        - app
+    level: 4
