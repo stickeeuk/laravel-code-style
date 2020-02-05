@@ -34,7 +34,7 @@ Ideally [Husky](https://github.com/typicode/husky) should then be installed. Ple
 
 ## Recommended
 
-It's recommended to install [larastan](https://github.com/nunomaduro/larastan) in the project.
+It's recommended to install [Larastan](https://github.com/nunomaduro/larastan) in the project.
 
 ```
 composer require --dev nunomaduro/larastan
@@ -42,7 +42,7 @@ composer require --dev nunomaduro/larastan
 
 Once installed, you can run `./vendor/bin/phpstan analyse` at anytime which gives you a very good insight into your code.
 
-You can add the following snippet to your .lintstagedrc file, within the `"*.php"` block to run larastan on the files committed:
+You can add the following snippet to your .lintstagedrc file, within the `"*.php"` block to run Larastan on the files committed:
 
 ```
 "php ./vendor/bin/phpstan analyse --no-ansi --no-progress",
