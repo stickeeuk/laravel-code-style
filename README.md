@@ -24,6 +24,14 @@ You then need to install eslint configs
 npx install-peerdeps --dev eslint-config-stickee
 ```
 
+And `imagemin-lint-staged` to automatically minimize committed image files
+
+```
+npm i --save-dev imagemin-lint-staged
+```
+
+Ideally [Husky](https://github.com/typicode/husky) should then be installed. Please see instructions below.
+
 ## Recommended
 
 It's recommended to install [larastan](https://github.com/nunomaduro/larastan) in the project.
@@ -34,11 +42,10 @@ composer require --dev nunomaduro/larastan
 
 Once installed, you can run `./vendor/bin/phpstan analyse` at anytime which gives you a very good insight into your code.
 
-You can add the following snippet to your .huskyrc file, in the pre-commit part of the file,
- to run this every time you try to commit to GIT:
+You can add the following snippet to your .lintstagedrc file, within the `"*.php"` block to run larastan on the files committed:
 
 ```
- && ./vendor/bin/phpstan analyse
+"php ./vendor/bin/phpstan analyse --no-ansi --no-progress",
 ```
 
 ### Husky (Task Runner)
