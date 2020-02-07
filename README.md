@@ -24,7 +24,7 @@ You then need to install eslint configs
 npx install-peerdeps --dev eslint-config-stickee
 ```
 
-And `imagemin-lint-staged` to automatically minimize committed image files
+Add `imagemin-lint-staged` to automatically minimize committed image files
 
 ```
 npm i --save-dev imagemin-lint-staged
