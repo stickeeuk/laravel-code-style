@@ -24,13 +24,15 @@ You then need to install eslint configs
 npx install-peerdeps --dev eslint-config-stickee
 ```
 
-Add `imagemin-lint-staged` to automatically minimize committed image files
+Highly recommend [Husky](https://github.com/typicode/husky) to greatly improve the quality of code committed into GIT. 
+It automates a LOT of tasks. Have a peek into `.huskyrc` and `.lintstagedrc` for an insight into what it does.
 
 ```
-npm i --save-dev imagemin-lint-staged
+npm install --save-dev husky lint-staged stylelint stylelint-config-sass-guidelines imagemin-lint-staged
 ```
 
-Ideally [Husky](https://github.com/typicode/husky) should then be installed. Please see instructions below.
+Once installed, please confirm the `.huskyrc` and `.lintstagedrc` are doing what you expect. Some projects 
+(e.g. PyroCMS) may not have the same structure, or you may want to disable phpunit tests if tests become slow.
 
 ## Recommended
 
@@ -40,22 +42,11 @@ It's recommended to install [Larastan](https://github.com/nunomaduro/larastan) i
 composer require --dev nunomaduro/larastan
 ```
 
-Once installed, you can run `./vendor/bin/phpstan analyse` at anytime which gives you a very good insight into your code.
-
-You can add the following snippet to your .lintstagedrc file, within the `"*.php"` block to run Larastan on the files committed:
-
-```
-"php ./vendor/bin/phpstan analyse --no-ansi --no-progress",
-```
-
-### Husky (Task Runner)
-
-It's advisable to use [Husky](https://github.com/typicode/husky) as the task runner. The config files 
-should already be published using the above command, however you will still need to install husky:
+Once installed, you can run `./vendor/bin/phpstan analyse` at anytime to scan your whole project, which gives you a very good insight into your code.
+By default this is already set up in your `.lintstagedrc` file, within the `"*.php"` block.
 
 ```
-npm install husky
-npm install lint-staged
+"./vendor/bin/phpstan analyse --no-ansi --no-progress",
 ```
 
 ### PHPCS
@@ -63,5 +54,5 @@ npm install lint-staged
 PHP-CS-Fixer can be manually ran using:
 
 ```
-vendor/bin/php-cs-fixer <COMMAND>
+./vendor/bin/php-cs-fixer <COMMAND>
 ```
