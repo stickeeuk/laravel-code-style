@@ -1,18 +1,22 @@
 {
     "*.php": [
-        "php ./vendor/bin/php-cs-fixer fix --config .php_cs"
+        "./vendor/bin/php-cs-fixer fix --config .php_cs",
+        "./vendor/bin/phpstan analyse"
     ],
     "*.{png,jpeg,jpg,gif,svg}": [
         "imagemin-lint-staged"
     ],
-    "resources/**/*.{css,js}": [
+     "resources/**/*.scss": [
+         "stylelint --syntax=scss --fix"
+     ],
+     "resources/**/*.{css,scss,js,vue}": [
         "prettier --write"
-    ],
-    "resources/**/*.js": [
+     ],
+    "resources/**/*.{js,vue}": [
         "./node_modules/.bin/eslint --fix"
     ],
     "composer.json": [
         "composer validate",
-        "php ./vendor/bin/security-checker security:check"
+        "./vendor/bin/security-checker security:check"
     ]
 }
