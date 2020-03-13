@@ -2,7 +2,6 @@
     "skipCI": false,
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "./vendor/bin/phpunit",
-      "post-checkout": "composer install && npm install"
+      "pre-push": "./vendor/bin/phpunit"
     }
 }

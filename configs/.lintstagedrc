@@ -3,15 +3,12 @@
         "./vendor/bin/php-cs-fixer fix --config .php_cs",
         "./vendor/bin/phpstan analyse"
     ],
-    "*.{png,jpeg,jpg,gif,svg}": [
-        "imagemin-lint-staged"
-    ],
-     "resources/**/*.scss": [
+    "resources/**/*.scss": [
          "stylelint --syntax=scss --fix"
-     ],
-     "resources/**/*.{css,scss,js,vue}": [
+    ],
+    "resources/**/*.{css,scss,js,vue}": [
         "prettier --write"
-     ],
+    ],
     "resources/**/*.{js,vue}": [
         "./node_modules/.bin/eslint --fix"
     ],

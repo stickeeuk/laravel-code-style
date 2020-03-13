@@ -28,7 +28,7 @@ Highly recommend [Husky](https://github.com/typicode/husky) to greatly improve t
 It automates a LOT of tasks. Have a peek into `.huskyrc` and `.lintstagedrc` for an insight into what it does.
 
 ```
-npm install --save-dev husky lint-staged stylelint stylelint-config-sass-guidelines imagemin-lint-staged
+npm install --save-dev husky lint-staged stylelint stylelint-config-sass-guidelines
 ```
 
 Once installed, please confirm the `.huskyrc` and `.lintstagedrc` are doing what you expect. Some projects
