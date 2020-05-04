@@ -88,6 +88,7 @@ return PhpCsFixer\Config::create()
                 'yield'
             ]
         ],
-        'no_unused_imports' => true
+        'no_unused_imports' => true,
+        'method_chaining_indentation' => true
     ])
     ->setFinder($finder);
