@@ -56,3 +56,15 @@ PHP-CS-Fixer can be manually ran using:
 ```
 ./vendor/bin/php-cs-fixer <COMMAND>
 ```
+
+## Docker
+If you are using docker you will need to modify your `.huskyrc` and `.lintstagedrc` files to run the commands within the container. `.huskyrc` for example:
+
+```$xslt
+"hooks": {
+  "pre-commit": "lint-staged -r",
+  "pre-push": "docker-compose exec -T php-fpm php vendor/bin/phpunit"
+}
+```
+
+The `php-fpm` should be updated to use your container name (use `docker ps` to list your current containers).
