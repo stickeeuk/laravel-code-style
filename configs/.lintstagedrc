@@ -6,9 +6,6 @@
     "resources/**/*.scss": [
          "stylelint --syntax=scss --fix"
     ],
-    "resources/**/*.{css,scss,js,vue}": [
-        "prettier --write"
-    ],
     "resources/**/*.{js,vue}": [
         "./node_modules/.bin/eslint --fix"
     ],
