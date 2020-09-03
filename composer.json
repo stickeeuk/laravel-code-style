@@ -28,5 +28,8 @@
         "Stickee\\LaravelCodeStyle\\StickeeServiceProvider"
       ]
     }
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master"
   }
 }
