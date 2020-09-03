@@ -6,9 +6,6 @@
     "resources/**/*.scss": [
          "stylelint --syntax=scss --fix"
     ],
-    "resources/**/*.{js,vue}": [
-        "./node_modules/.bin/eslint --fix"
-    ],
     "composer.json": [
         "composer validate",
         "./vendor/bin/security-checker security:check"
